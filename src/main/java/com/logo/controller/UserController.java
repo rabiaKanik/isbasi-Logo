@@ -2,6 +2,7 @@ package com.logo.controller;
 
 import java.util.List;
 
+import com.logo.model.Bank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,5 +41,8 @@ public class UserController {
 	public List<Customer> getCustomersUserByEmail(@PathVariable String email) {
 		return userService.getCustomersByEmail(email);
 	}
-
+	@GetMapping(value = "/{email}/banks")
+	private List<Bank> getBanksUserByEmail(@PathVariable String email){
+		return userService.getBanksByEmail(email);
+	}
 }

@@ -3,6 +3,7 @@ package com.logo.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.logo.model.Bank;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,15 +18,19 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	/*
+
 	@Autowired
 	private RabbitMQService rabbitMQService;
-	
+
 	@Autowired
 	private AmqpTemplate rabbitTemplate;
 
+	 */
+
 	public User createUser(User request) {
 				
-		rabbitTemplate.convertAndSend("isbasi.email", request.getEmail());
+		//rabbitTemplate.convertAndSend("isbasi.email", request.getEmail());
 		
 		//rabbitMQService.sendEmail(request.getEmail());
 		
@@ -63,4 +68,12 @@ public class UserService {
 		return null;
 	}
 
+	public List<Bank> getBanksByEmail(String email) {
+		Optional<User> foundUser = userRepository.findByEmail(email);
+
+		if (foundUser.isPresent()){
+			return foundUser.get().getBankList();
+		}
+		return null ;
+	}
 }

@@ -6,13 +6,14 @@ import java.util.List;
 import com.logo.model.enums.FirmType;
 
 public class User {
-
 	private String name;
 	private String surname;
 	private String email;
 	private String password;
 	private FirmType firmType;
 	private Address address;
+
+	private List<Bank> bankList = new ArrayList<>(10);
 	private List<Customer> customerList = new ArrayList<>(10);
 
 	public String getName() {
@@ -70,7 +71,13 @@ public class User {
 	public void setCustomerList(List<Customer> customerList) {
 		this.customerList = customerList;
 	}
-	
-	
+
+	public List<Bank> getBankList() {
+		return bankList;
+	}
+
+	public void setBankList(List<Bank> bankList) {
+		this.bankList = bankList;
+	}
 
 }
