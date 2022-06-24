@@ -1,6 +1,5 @@
 package com.logo.repository;
 
-
 import com.logo.model.Bank;
 import org.springframework.stereotype.Repository;
 
