@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/banks")
 public class BankController {
-
     @Autowired
     private BankService bankService;
 
     //Var olan bankaları listeleme
-    @GetMapping(value = "/banks")
+    @GetMapping
     private List<Bank> getAllBanks(){
         return bankService.getAllBanks();
     }
 
     //Hesap numarasına göre hesabı getirme
-    @GetMapping(value = "/banks/{accountNumber}")
+    @GetMapping(value = "/{accountNumber}")
     private Bank getBanksByAccountNumber(@PathVariable("accountNumber") Long accountNumber){
         return bankService.getBankByAccountNumber(accountNumber);
     }
@@ -47,7 +47,7 @@ public class BankController {
      */
 
     //Banka bilgileri güncelleme
-    @PutMapping(value = "/banks")
+    @PutMapping
     private Bank update(@RequestBody Bank bank ){
         bankService.update(bank);
         return bank;

@@ -27,7 +27,6 @@ public class UserService {
 	private AmqpTemplate rabbitTemplate;
 
 	 */
-
 	public User createUser(User request) {
 				
 		//rabbitTemplate.convertAndSend("isbasi.email", request.getEmail());
