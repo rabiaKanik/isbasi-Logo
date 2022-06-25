@@ -11,6 +11,7 @@ import java.util.Optional;
 public class BankRepository {
 
     private static List<Bank> bankList = new ArrayList<>();
+
     public Optional<Bank> findByAccountNumber(Long accountNumber) {
         return bankList.stream().filter(bank -> bank.getAccountNumber().equals(accountNumber)).findFirst();
     }
